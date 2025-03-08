@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Madeena Masjid Dubauli Fazilnagar</title>
+
+    <!-- Meta Information -->
+    <meta name="keywords" content="Madeena Masjid Dubauli Fazilnagar Kushinagar UP">
+    <meta name="robots" content="max-image-preview:large">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        #site-content {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+        }
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .member-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .member-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .notice-board {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .notice-board input, .notice-board textarea, .notice-board button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .notice-item {
+            background: #e9e9e9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="site-content">
+        <h1>Welcome to Madeena Masjid Dubauli Fazilnagar</h1>
+
+        <!-- Member Section -->
+        <h2>Masjid Committee Members</h2>
+        <div class="member-grid">
+            <div class="member-card">
+                <img src="image1.jpg" alt="member 1">
+                <h3>Ramjan Ali</h3>
+                <p>Chairman</p>
+            </div>
+            <div class="member-card">
+                <img src="image2.jpg" alt="Member 2">
+                <h3>Azaruddin Ansari</h3>
+                <p>Clerk</p>
+            </div>
+            <div class="member-card">
+                <img src="member3.jpg" alt="Member 3">
+                <h3>Haidar Miyan</h3>
+                <p>Cashier</p>
+            </div>
+            <div class="member-card">
+                <img src="member4.jpg" alt="Member 4">
+                <h3>Sobarati Miyan</h3>
+                <p>Helping person</p>
+            </div>
+        </div>
+
+        <!-- Notice Board Section -->
+        <div class="notice-board">
+            <h2>Masjid Notice Board</h2>
+            <form id="noticeForm">
+                <input type="text" id="noticeTitle" placeholder="Notice Title" required>
+                <textarea id="noticeContent" placeholder="Notice Content" required></textarea>
+                <input type="file" id="noticeImage" accept="image/*" multiple>
+                <button type="submit">Add Notice</button>
+            </form>
+            <div id="noticeList"></div>
+        </div>
+    </div>
+
+    <script>
+        const noticeForm = document.getElementById('noticeForm');
+        const noticeList = document.getElementById('noticeList');
+
+        noticeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('noticeTitle').value;
+            const content = document.getElementById('noticeContent').value;
+            const files = document.getElementById('noticeImage').files;
+
+            const noticeDiv = document.createElement('div');
+            noticeDiv.className = 'notice-item';
+            noticeDiv.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+
+            if (files.length > 0) {
+                Array.from(files).forEach(file => {
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    img.style.maxWidth = '100%';
+                    img.style.marginTop = '10px';
+                    noticeDiv.appendChild(img);
+                });
+            }
+
+            noticeList.appendChild(noticeDiv);
+            noticeForm.reset();
+        });
+    </script>
+
+</body>
+
+</html>
